@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basic.component.css']
 })
 export class BasicComponent implements OnInit {
+  switchstate = 'original';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  setState(state: string): void {
+    this.switchstate = state;
+    console.log(state);
+  }
 }
