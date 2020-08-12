@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 
-import { fadeAnimation } from '../animations';
+import { fadeAnimationHardCoded, fadeAnimationConfigurable } from '../animations';
 
 @Component({
   selector: 'app-fade-block',
@@ -11,7 +11,15 @@ import { fadeAnimation } from '../animations';
     trigger('changeState', [
       // 'void' state means as soon as the component is first rendered to the screen
       transition('void => *', [
-        useAnimation(fadeAnimation)
+        // useAnimation(fadeAnimationHardCoded)
+        useAnimation(fadeAnimationConfigurable, {
+          params: {
+            delay: '3000ms',
+            from: 0,
+            to: 1,
+            time: '1s'
+          }
+        })
       ])
     ])
   ]
