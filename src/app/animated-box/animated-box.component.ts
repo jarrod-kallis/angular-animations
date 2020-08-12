@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { trigger, state, style, animate, transition, keyframes, group } from '@angular/animations';
+import { trigger, state, style, animate, transition, keyframes, group, AnimationEvent } from '@angular/animations';
 
 @Component({
   selector: 'app-animated-box',
@@ -62,9 +62,18 @@ export class AnimatedBoxComponent implements OnInit {
 
   @Input() currentState: string;
 
+  msg = 'rest';
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  animationBegin(e: AnimationEvent): void {
+    this.msg = e.phaseName + ': ' + e.fromState + ' => ' + e.toState + ' [' + e.totalTime + ']';
+  }
+
+  animationEnd(e: AnimationEvent): void {
+    this.msg = e.phaseName + ': ' + e.fromState + ' => ' + e.toState + ' [' + e.totalTime + ']';
+  }
 }
