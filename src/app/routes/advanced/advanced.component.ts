@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition, query } from '@angular/animations';
+import { trigger, state, style, animate, transition, query, stagger } from '@angular/animations';
 
 @Component({
   selector: 'app-advanced',
@@ -9,9 +9,9 @@ import { trigger, state, style, animate, transition, query } from '@angular/anim
     trigger('spoonAnimation', [
       transition('* => *', [
         query(':enter', style({ opacity: 0 }), { optional: true }), // Start
-        query(':enter', [
+        query(':enter', stagger('100ms', [
           animate('1s', style({ opacity: 1 })) // Animate
-        ], { optional: true })
+        ]), { optional: true })
       ])
     ])
   ],
