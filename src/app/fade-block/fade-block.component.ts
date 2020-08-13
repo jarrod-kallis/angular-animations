@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, transition, useAnimation } from '@angular/animations';
+import { trigger, transition, useAnimation, AnimationEvent } from '@angular/animations';
 
 import { fadeAnimationHardCoded, fadeAnimationConfigurable } from '../animations';
 
@@ -15,8 +15,8 @@ import { fadeAnimationHardCoded, fadeAnimationConfigurable } from '../animations
         useAnimation(fadeAnimationConfigurable, {
           params: {
             delay: '3000ms',
-            from: 0,
-            to: 1,
+            from: 1,
+            to: 0,
             time: '1s'
           }
         })
@@ -26,9 +26,18 @@ import { fadeAnimationHardCoded, fadeAnimationConfigurable } from '../animations
 })
 export class FadeBlockComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    console.log('FadeBlockComponent constructor');
+  }
 
   ngOnInit(): void {
   }
 
+  animationBegin(e: AnimationEvent): void {
+    console.log(e.phaseName + ': ' + e.fromState + ' => ' + e.toState + ' [' + e.totalTime + ']');
+  }
+
+  animationEnd(e: AnimationEvent): void {
+    console.log(e.phaseName + ': ' + e.fromState + ' => ' + e.toState + ' [' + e.totalTime + ']');
+  }
 }

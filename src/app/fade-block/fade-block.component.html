@@ -1,1 +1,2 @@
-<div class="fadeBlock mx-auto" [@changeState]></div>
+<div class="fadeBlock mx-auto" [@changeState] (@changeState.start)="animationBegin($event)"
+  (@changeState.done)="animationEnd($event)"></div>

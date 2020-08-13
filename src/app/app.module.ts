@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Data } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './routes/home/home.component';
@@ -12,27 +12,61 @@ import { AnimatedBoxComponent } from './animated-box/animated-box.component';
 import { MouseComponent } from './mouse/mouse.component';
 import { FadeBlockComponent } from './fade-block/fade-block.component';
 
+export interface RouteAnimation {
+  value: string;
+}
+
 const animationRoutes: Routes = [
   {
     path: 'animation-home',
-    component: HomeComponent
+    component: HomeComponent,
+    data: {
+      animation: {
+        value: 'home',
+      }
+    }
   },
   {
     path: 'animation-basics',
-    component: BasicComponent
+    component: BasicComponent,
+    data: {
+      animation: {
+        value: 'basics',
+      }
+    }
   },
   {
     path: 'animation-contained',
-    component: ContainedComponent
+    component: ContainedComponent,
+    data: {
+      animation: {
+        value: 'contained',
+      }
+    }
   },
   {
     path: 'animation-advanced',
-    component: AdvancedComponent
+    component: AdvancedComponent,
+    // This data object literal has to be removed if you want the
+    // animation on the block inside the AdvancedComponent to work.
+    // No idea what's going on here
+    // Also, visting the route for a second time doesn't run the animation again,
+    // well it does, but so quickly that you see nothing (Check out the console.logs that get printed)
+    // data: {
+    //   animation: {
+    //     value: 'advanced',
+    //   }
+    // }
   },
   {
     path: '',
     redirectTo: '/animation-home',
-    pathMatch: 'full'
+    pathMatch: 'full',
+    data: {
+      animation: {
+        value: 'home',
+      }
+    }
   }
 ];
 
