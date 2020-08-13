@@ -2,7 +2,21 @@
 <div class="container-fluid">
   <div class="row align-items-center">
     <div class="col-12">
+      <div [@spoonAnimation]="spoons.length">
+        <ul class="spoon-container">
+          <li *ngFor="let spoon of spoons" class="spoon-block d-flex justify-content-center">
+            {{ spoon.name }}
+          </li>
+        </ul>
+      </div>
+
       <app-fade-block></app-fade-block>
     </div>
   </div>
+
+  <hr />
+
+  <button class="btn btn-primary" (click)="showSpoons()">
+    {{ spoons.length > 0 ? 'Hide Spoons' : 'Show Spoons' }}
+  </button>
 </div>

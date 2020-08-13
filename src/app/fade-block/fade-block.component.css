@@ -1,4 +1,5 @@
 .fadeBlock {
+  position: absolute;
   background-color: #ec971f;
   width: 600px;
   height: 300px;
